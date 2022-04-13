@@ -1,2 +1,2 @@
 # UUID
-A multifaceted c++ UUID Implimentation
+A multifaceted C++ UUID Implimentation
