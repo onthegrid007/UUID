@@ -2,25 +2,23 @@
 *   BSD 3-Clause License, see file labled 'LICENSE' for the full License.
 *   Copyright (c) 2022, Peter Ferranti
 *   All rights reserved.
-*   Other Contributers:
 */
 
 #include "UUID.h"
-#include <sstream>
 #include <ctime>
+#include <random>
+#include <sstream>
 
-const std::string seedTimetoStr() {
-    std::stringstream ss; ss << (uint64_t)time(0); return ss.str();
-}
+static const std::string __SEEDRNGSTR_() { std::stringstream ss; ss << (uint64_t)time(0); return ss.str(); }
 
-std::random_device UUID::RandomDevice(seedTimetoStr());
-std::mt19937_64 UUID::RandomEngine(UUID::RandomDevice());
-std::uniform_int_distribution<uint64_t> UUID::UniformDistribution;
+static std::random_device __RandomDevice(__SEEDRNGSTR_());
+static std::mt19937_64 __RandomEngine(__RandomDevice());
+static std::uniform_int_distribution<uint64_t> __UniformDistribution;
 
 UUID::UUID() :
-    m_UUID(UUID::UniformDistribution(UUID::RandomEngine)) { }
+    m_UUID(__UniformDistribution(__RandomEngine)) { }
 
-UUID::UUID(const uint64_t& uuid) :
+UUID::UUID(const uint64_t uuid) :
     m_UUID(uuid) { }
 
 UUID::operator uint64_t() const { return m_UUID; }
