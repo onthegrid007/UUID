@@ -13,11 +13,6 @@ class UUID {
     protected:
     uint64_t m_UUID;
 
-    private:
-    // static std::random_device RandomDevice;
-    // static std::mt19937_64 RandomEngine;
-    // static std::uniform_int_distribution<uint64_t> UniformDistribution;
-
     public:
     UUID();
     UUID(const uint64_t uuid);
@@ -30,8 +25,4 @@ class UUID {
         return s << this->operator const std::string();
     }
 };
-
-// template<typename T>
-// class UUIDContainer : public std::deque<T> {
-// };
 #endif
