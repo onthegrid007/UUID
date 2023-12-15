@@ -8,16 +8,15 @@
 #define UUID_HPP_
 
 #include <cstdint>
-// #include <sstream>
 #include <random>
 
-static std::random_device __RandomDevice{};//([](){ std::stringstream ss; ss << (uint64_t)time(0); return ss.str(); })());
-static std::mt19937_64 __RandomEngine(__RandomDevice());
+inline static std::random_device __RandomDevice{};
+inline static std::mt19937_64 __RandomEngine(__RandomDevice());
 
 template<class T = uint64_t>
 class _UUID {
     private:
-    static std::uniform_int_distribution<T> __UniformDistribution;
+    inline static std::uniform_int_distribution<T> __UniformDistribution{};
     
     public:
     typedef T Type;
