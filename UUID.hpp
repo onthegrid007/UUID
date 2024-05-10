@@ -25,6 +25,6 @@ class _UUID {
     constexpr _UUID(const _UUID& other) : m_uuid(other.m_uuid) {}//})= default;
 };
 
-typedef _UUID<> UUID;
+typedef _UUID<> UUID_T;
 
 #endif
