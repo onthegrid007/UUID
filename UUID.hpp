@@ -23,6 +23,8 @@ class _UUID {
     T m_uuid;
     _UUID() : m_uuid(__UniformDistribution(__RandomEngine)) {}
     constexpr _UUID(const _UUID& other) : m_uuid(other.m_uuid) {}//})= default;
+    constexpr bool operator!=(const _UUID& other) { return m_uuid != other.m_uuid; }
+    constexpr bool operator==(const _UUID& other) { return m_uuid == other.m_uuid; }
 };
 
 typedef _UUID<> UUID_T;
