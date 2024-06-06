@@ -25,6 +25,15 @@ class _UUID {
     constexpr _UUID(const _UUID& other) : m_uuid(other.m_uuid) {}//})= default;
     constexpr bool operator!=(const _UUID& other) { return m_uuid != other.m_uuid; }
     constexpr bool operator==(const _UUID& other) { return m_uuid == other.m_uuid; }
+    operator const std::string() {
+        std::stringstream ss;
+        ss << m_uuid;
+        return ss.str();
+    }
+    friend std::ostream& operator<<(std::ostream& os, const _UUID& uuid) {
+        os << uuid.m_uuid;
+        return os;
+    }
 };
 
 typedef _UUID<> UUID_T;
