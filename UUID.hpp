@@ -13,7 +13,7 @@
 inline static std::random_device __RandomDevice{};
 inline static std::mt19937_64 __RandomEngine(__RandomDevice());
 
-template<class T = uint64_t>
+template<class T = std::uint64_t>
 class _UUID {
     private:
     inline static std::uniform_int_distribution<T> __UniformDistribution{};
